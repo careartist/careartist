@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\User\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\User\Profile;
 
 class ProfileController extends Controller
 {
@@ -15,7 +17,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.settings.profile.index')->withUser(Auth::user());
     }
 
     /**
@@ -58,7 +60,7 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        //
+        return view('user.settings.profile.edit')->withProfile($profile);
     }
 
     /**
@@ -70,7 +72,19 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        $validation = $this->validator($request->all(), $profile->id)->validate();
+
+        if($validation)
+        {
+            return $validation;
+        }
+
+        $profile->uap_number = $request['uap_number'];
+        $profile->phone_number = $request['phone_number'];
+
+        $profile->save();
+
+        return redirect()->route('profile.index');
     }
 
     /**
@@ -82,5 +96,20 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         //
+    }
+
+
+    /**
+     * Get a validator for an incoming address request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data, $id)
+    {
+        return Validator::make($data, [
+            'uap_number' => 'nullable|numeric|digits:6|unique:profiles,uap_number,' . $id,
+            'phone_number' => 'nullable|numeric|digits:10|unique:profiles,phone_number,' . $id,
+        ]);
     }
 }

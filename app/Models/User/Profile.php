@@ -21,6 +21,8 @@ class Profile extends Model
         'first_name',
         'last_name',
         'avatar',
+        'uap_number',
+        'phone_number',
     ];
 
     public function address()

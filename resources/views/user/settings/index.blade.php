@@ -10,8 +10,9 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-md-4">
+                        <p><a href="{{route('profile.index')}}">Profile settings</a></p>
                         <p><a href="{{route('address.index')}}">Address settings</a></p>
-                        <p><a href="#">settings</a></p>
+                        <p><a href="#">Roles settings</a></p>
                     </div>
                     <div class="col-md-8">
                         <div class="row">

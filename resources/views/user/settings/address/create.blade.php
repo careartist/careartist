@@ -65,6 +65,36 @@
                             </div>
                         </div>
 
+                        <hr>
+
+                        <div class="form-group{{ $errors->has('uap_number') ? ' has-error' : '' }}">
+                            <label for="uap_number" class="col-md-4 control-label">UAP Number</label>
+
+                            <div class="col-md-6">
+                                <input id="uap_number" type="text" class="form-control" name="uap_number" value="{{ old('uap_number') }}">
+
+                                @if ($errors->has('uap_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('uap_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
+                            <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
+
+                            <div class="col-md-6">
+                                <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+
+                                @if ($errors->has('phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

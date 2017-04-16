@@ -18,6 +18,7 @@ Route::name('home')->get('/', function () {
 Route::prefix('user')->group(function() {
 
 	Route::resource('/settings/address', 'User\AddressController');
+	Route::resource('/settings/profile', 'User\ProfileController');
 	
 	Route::name('user.dashboard')->get('/', 'HomeController@index');
 	Route::name('user.settings')->get('/settings', 'User\SettingsController@index');

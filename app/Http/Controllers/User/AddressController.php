@@ -70,6 +70,8 @@ class AddressController extends Controller
         ]);
 
         $profile->address_id = $address->id;
+        $profile->uap_number = $request['uap_number'];
+        $profile->phone_number = $request['phone_number'];
         $profile->save();
 
         return redirect()->route('address.index');
@@ -163,6 +165,8 @@ class AddressController extends Controller
             'region' => 'required|numeric',
             'place' => 'required|numeric',
             'address' => 'required|max:190',
+            'uap_number' => 'nullable|numeric|unique:profiles|digits:6',
+            'phone_number' => 'nullable|numeric|unique:profiles|digits:10',
         ]);
     }
 }

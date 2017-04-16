@@ -2,7 +2,6 @@
 
 @section('settings')
         <div class="col-md-12">
-            Address Page
             <span class="pull-right">
                 <a href="{{ route('address.edit', ['address' => $user->profile->address->id]) }}" class="btn btn-primary btn-xs">Edit</a>
             </span>

@@ -24,6 +24,7 @@ Route::prefix('user')->group(function() {
 	Route::name('user.settings')->get('/settings', 'User\SettingsController@index');
 
 	Route::get('/ajax-places/{region}', 'User\AddressController@ajaxCities');
+	Route::name('user.avatar')->post('/ajax-avatar/{profile}', 'User\AvatarController@ajaxAvatar');
 });
 
 

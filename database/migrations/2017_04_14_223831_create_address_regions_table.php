@@ -13,21 +13,21 @@ class CreateAddressRegionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('regions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('place');
-            $table->unsignedInteger('post_code');
-            $table->unsignedInteger('sirsup');
-            $table->smallInteger('place_type')->unsigned();
-            $table->smallInteger('type')->unsigned();
-            $table->tinyInteger('level')->unsigned();
-            $table->tinyInteger('med')->unsigned();
-            $table->tinyInteger('area')->unsigned();
-            $table->smallInteger('fsj')->unsigned();
-            $table->bigInteger('fsl')->unsigned();
-            $table->string('rang')->nullable();
-            $table->timestamps();
-        });
+        // Schema::create('regions', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('place');
+        //     $table->unsignedInteger('post_code');
+        //     $table->unsignedInteger('sirsup');
+        //     $table->smallInteger('place_type')->unsigned();
+        //     $table->smallInteger('type')->unsigned();
+        //     $table->tinyInteger('level')->unsigned();
+        //     $table->tinyInteger('med')->unsigned();
+        //     $table->tinyInteger('area')->unsigned();
+        //     $table->smallInteger('fsj')->unsigned();
+        //     $table->bigInteger('fsl')->unsigned();
+        //     $table->string('rang')->nullable();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -37,6 +37,6 @@ class CreateAddressRegionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('regions');
+        // Schema::dropIfExists('regions');
     }
 }

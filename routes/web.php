@@ -17,6 +17,7 @@ Route::name('home')->get('/', function () {
 
 Route::prefix('user')->group(function() {
 
+	Route::resource('/products', 'User\ProductController');
 	Route::resource('/settings/address', 'User\AddressController');
 	Route::resource('/settings/profile', 'User\ProfileController');
 	
@@ -25,6 +26,7 @@ Route::prefix('user')->group(function() {
 
 	Route::get('/ajax-places/{region}', 'User\AddressController@ajaxCities');
 	Route::name('user.avatar')->post('/ajax-avatar/{profile}', 'User\AvatarController@ajaxAvatar');
+	Route::name('ucare.increment')->post('/ucare-increment', 'User\UcareController@increment');
 });
 
 

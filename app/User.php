@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\User\Profile;
+use App\Models\User\Product;
 
 class User extends Authenticatable
 {
@@ -34,6 +35,11 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
+    
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'user_id', 'id');
     }
     
     // Set the verified status to true and make the email token null

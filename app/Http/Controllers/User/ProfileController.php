@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User\Profile;
+use App\Models\User\Ucare;
 
 class ProfileController extends Controller
 {
@@ -17,7 +18,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('user.settings.profile.index')->withUser(Auth::user());
+        $ucare = Ucare::getLowestUploads();
+        $user = Auth::user();
+        $user->ucare_id = $ucare->id;
+        $user->save();
+        
+        return view('user.settings.profile.index')->with(['user' => Auth::user(), 'ucare' => $ucare]);
     }
 
     /**
